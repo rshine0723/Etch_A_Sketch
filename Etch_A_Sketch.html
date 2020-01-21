@@ -1,0 +1,54 @@
+<html>
+<style>
+#container {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: 1fr;
+    height: 600px;
+    width: 600px;
+}
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  height: 150px;
+  width: 150px;
+  text-align: center;
+}
+</style>
+<body>
+    <h1>
+        GRID
+    </h1>
+    <button id="btn">Reset</button>
+    <div id="container"></div>
+</body>
+<script>
+var numItems = 16;
+const container = document.querySelector('#container');
+
+function addDiv(num) {
+    for (let i = 0; i < num; i++) {
+        let content = document.createElement('div')
+        content.classList.add('grid-item');
+        container.appendChild(content);
+    }
+}
+addDiv(16);
+const items = document.querySelectorAll('div.grid-item')
+items.forEach((item) => {
+    item.addEventListener('mouseover', (e) => {
+        item.style.background = 'red';
+    })
+})
+function clear() {
+    console.log(items);
+    items.forEach((item) => {
+        item.style.background = 'white'
+    })
+}
+const btn = document.querySelector('#btn')
+btn.addEventListener('click', clear)
+</script>
+</html>
